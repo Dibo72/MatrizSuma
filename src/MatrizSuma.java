@@ -4,10 +4,12 @@ public class MatrizSuma {
         Scanner sc = new Scanner(System.in);
 
         int[][] matriz = new int[3][3];
+        int[][] sumaFila = new int[1][3];
+        int[][] sumaColumna = new int[1][3];
         int n = 1;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
                 System.out.println("Introduce el valor numero " + (n));
                 matriz[i][j] = sc.nextInt();
                 n++;
@@ -15,12 +17,7 @@ public class MatrizSuma {
         }
 
         System.out.println("Matriz:");
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j] + " ");
-            }
-            System.out.println();
-        }
+        mostrar(matriz);
         System.out.println();
 
         System.out.println("Suma de filas:");
@@ -30,10 +27,11 @@ public class MatrizSuma {
             for (int j = 0; j < matriz[i].length; j++) {
                 sumaFilas += matriz[i][j];
             }
-            System.out.println("Suma de la fila numero " + n + ": " + sumaFilas);
+            sumaFila[0][i]=sumaFilas;
             n++;
             sumaFilas = 0;
         }
+        mostrar(sumaFila);
         System.out.println();
 
         System.out.println("Suma de la columnas:");
@@ -43,10 +41,11 @@ public class MatrizSuma {
             for (int j = 0; j < matriz[i].length; j++) {
                 sumaColumnas += matriz[j][i];
             }
-            System.out.println("Suma de la columna numero " + n + ": " + sumaColumnas);
+            sumaColumna[0][i] = sumaColumnas;
             n++;
             sumaColumnas = 0;
         }
+        mostrar(sumaColumna);
         System.out.println();
 
         System.out.println("Suma de la diagonal principal:");
@@ -56,5 +55,14 @@ public class MatrizSuma {
         }
         System.out.println(sumaDiagonal);
 
+    }
+
+    public static void mostrar(int[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
